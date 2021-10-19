@@ -22,6 +22,7 @@ public class ListAction implements Action {
 		List<Cafe> list = dao.getList();
 		request.setAttribute("CafeList", list);
 		System.out.println(list);
+		System.out.println(list.size());
 		forward.isRedirect = false;
 		forward.url="deco/list.jsp";
 		return forward;

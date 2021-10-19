@@ -9,6 +9,7 @@
   <typeAliases>
   	<typeAlias type="com.deco.dto.Users" alias="Users"/>
   	<typeAlias type="com.deco.dto.Cafe" alias="Cafe"/>
+  	<typeAlias type="com.deco.dto.SessionDto" alias="SessionDto"/>
   	
   </typeAliases>
   

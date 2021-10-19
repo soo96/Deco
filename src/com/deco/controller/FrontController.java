@@ -13,6 +13,9 @@ import com.deco.controller.action.Action;
 import com.deco.controller.action.ActionForward;
 import com.deco.controller.action.CafeAction;
 import com.deco.controller.action.ListAction;
+import com.deco.controller.action.LoginAction;
+import com.deco.controller.action.LogoutAction;
+import com.deco.controller.action.MemberAction;
 
 @WebServlet("*.deco")
 public class FrontController extends HttpServlet {
@@ -31,20 +34,31 @@ public class FrontController extends HttpServlet {
 	@Override
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ActionForward forward = new ActionForward();
+		ActionForward forward = null;
+//		ActionForward forward = new ActionForward();
 		
 		String spath = request.getServletPath();
 		System.out.println(spath);
-		forward.setRedirect(false);
-		forward.setUrl("./");
+//		forward.setRedirect(false);
+//		forward.setUrl("./");
+		String url="./";
 		
 		if(spath.equals("/list.deco")) {
 			Action action = new ListAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/home.deco")) {
-			
+		}else if(spath.equals("/loginAction.deco")) {
+			Action action = new LoginAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/logout.deco")) {
+			Action action = new LogoutAction();
+			forward = action.execute(request, response);
 		}else if(spath.equals("/cafe.deco")) {
 			Action action = new CafeAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/member.deco")) {
+			forward = new ActionForward(false, "deco/memberView.jsp");
+		}else if(spath.equals("/memberAction.deco")) {
+			Action action = new MemberAction();
 			forward = action.execute(request, response);
 		}
 		
