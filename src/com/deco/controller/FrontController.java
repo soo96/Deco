@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.deco.controller.action.Action;
 import com.deco.controller.action.ActionForward;
 import com.deco.controller.action.CafeAction;
+import com.deco.controller.action.DibsListAction;
 import com.deco.controller.action.ListAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
@@ -59,6 +60,9 @@ public class FrontController extends HttpServlet {
 			forward = new ActionForward(false, "deco/memberView.jsp");
 		}else if(spath.equals("/memberAction.deco")) {
 			Action action = new MemberAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/dibsList.deco")) {
+			Action action = new DibsListAction();
 			forward = action.execute(request, response);
 		}
 		

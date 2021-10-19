@@ -30,6 +30,7 @@
  <input type="button" href="" value="금주의 핫플"></input>
  <input type="button" href="" value="추천등록"></input>
  <a href="list.deco" class=" ">리스트 보기</a>
+ <a href="dibsList.deco" class=" ">찜목록</a>
 </section>
 <hr>
 
