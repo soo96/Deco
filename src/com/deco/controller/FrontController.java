@@ -12,11 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.deco.controller.action.Action;
 import com.deco.controller.action.ActionForward;
 import com.deco.controller.action.CafeAction;
+import com.deco.controller.action.CafeInsertAction;
+import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
 import com.deco.controller.action.ListAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
 import com.deco.controller.action.MemberAction;
+import com.deco.controller.action.ModifyAction;
+import com.deco.controller.action.ReviewListAction;
 
 @WebServlet("*.deco")
 public class FrontController extends HttpServlet {
@@ -64,8 +68,21 @@ public class FrontController extends HttpServlet {
 		}else if(spath.equals("/dibsList.deco")) {
 			Action action = new DibsListAction();
 			forward = action.execute(request, response);
+		}else if(spath.equals("/cafeUpdate.deco")) {
+			Action action = new CafeUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.contentEquals("/edit.deco")){
+			Action action = new ModifyAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/cafeInsert.deco")) {
+			forward = new ActionForward(false,"deco/cafeInsert.jsp");
+		}else if(spath.equals("/cafeInsertAction.deco")) {
+			Action action = new CafeInsertAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/reviewList.deco")) {
+			Action action = new ReviewListAction();
+			forward = action.execute(request, response);
 		}
-		
 		
 		
 		

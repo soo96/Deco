@@ -30,10 +30,10 @@
 			<ul>
 		    	<li>${vo.name }</li>
 		       	<li>${vo.content }</li>
-		       	<li>${vo.phone }</li>
-		       	<li>${vo.addr }</li>
-		       	<li>${vo.menu }</li>
-		       	<li>${vo.grade }</li>
+		       	<li>연락처 : ${vo.phone }</li>
+		       	<li>주소 : ${vo.addr }</li>
+		       	<li>메뉴 : ${vo.menu }</li>
+		       	<li>평점 : ${vo.grade }</li>
 		       	<li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
 		       	<li>${vo.location }</li>
 		    </ul>
