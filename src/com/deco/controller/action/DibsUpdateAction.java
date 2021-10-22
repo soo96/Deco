@@ -22,6 +22,17 @@ public class DibsUpdateAction implements Action {
 			throws ServletException, IOException {
 		
 		ActionForward forward = new ActionForward();
+
+		HttpSession session = request.getSession();
+		SessionDto sdto = (SessionDto)session.getAttribute("user");
+		if(sdto==null) {
+			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
+			request.setAttribute("url", "home_login.deco");
+			forward.isRedirect = false;
+			forward.url="error/alert.jsp";
+			return forward;
+		}
+		
 		DibsDao dibsdao = DibsDao.getInstance();
 		int refidx = Integer.parseInt(request.getParameter("refidx"));
 		Map<String,String> map = new HashMap<String,String>();
@@ -29,8 +40,6 @@ public class DibsUpdateAction implements Action {
 		String message=null,url=null;
 		
 		// dibCafe 가져오기
-		HttpSession session = request.getSession();
-		SessionDto sdto = (SessionDto)session.getAttribute("user");	// 세션에서 user 정보
 		String nickname = sdto.getNickname();	// user 에서 닉네임
 		Dibs dibs = dibsdao.getDibs(nickname);	// 닉네임으로 dibs 정보
 		String dibCafe = dibs.getDibCafe();	// 요것이 dibCafe 컬럼
@@ -46,7 +55,7 @@ public class DibsUpdateAction implements Action {
 			dibsdao.updateCafeDibs(map);
 			
 			message="찜목록 추가 완료!";
-			url="deco/cafe.jsp?idx="+refidx;
+			url="cafe.deco?idx="+refidx;
 		}else {		// true 이면 삭제!!
 			System.out.println(dibCafe);
 			dibCafe = dibCafe.replace("/"+refidx+"/", "/");	// ex "/123/" 삭제하고 "/"로 대체 
@@ -57,7 +66,7 @@ public class DibsUpdateAction implements Action {
 			dibsdao.updateCafeDibs(map);
 			
 			message="찜목록 삭제 완료!";
-			url="deco/cafe.jsp?idx="+refidx;
+			url="cafe.deco?idx="+refidx;
 		}
 		
 		request.setAttribute("message", message);

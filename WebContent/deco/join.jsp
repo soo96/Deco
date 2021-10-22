@@ -31,6 +31,8 @@
 </script>
 </head>
 <body>
+<%@ include file="../top.jsp" %>
+<section>
 	<div style="width: 70%; margin: auto;">
 		<h3>회원 등록</h3>
 		<form action="memberAction.deco" name="frmReg" method="post">
@@ -109,6 +111,8 @@
 			</table>
 		</form>
 	</div>
+</section>
+<%@ include file="../bottom.jsp" %>
 	<script type="text/javascript">
 	document.getElementById("selectEmail").addEventListener("change",function(){
 		if(this.value=="직접입력"){ //this는 getElementById("addr_select")요소

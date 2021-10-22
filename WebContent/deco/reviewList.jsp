@@ -8,8 +8,8 @@
 </head>
 <title>deco ::리뷰목록</title>
 <body>
-<div>
-</div>
+<%@ include file="../top.jsp" %>
+<section>
 	<div>
 	<form action="review.deco" method="get">
 	<h3>리뷰리스트</h3>
@@ -22,5 +22,7 @@
 	</c:forEach>
 	</form>
 	</div>
+</section>
+<%@ include file="../bottom.jsp" %>
 </body>
 </html>

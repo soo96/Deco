@@ -1,6 +1,7 @@
 package com.deco.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,13 +19,23 @@ public class CafeDao {
 	
 	SqlSessionFactory factory = SqlSessionBean.getSessionFactory();
 	
-	public List<Cafe> getList() {
+//	public List<Cafe> getList() {
+//		List<Cafe> list = null;
+//		SqlSession mapper = factory.openSession();
+//		list = mapper.selectList("cafe.getList");
+//		mapper.close();
+//		return list;
+//	}
+	
+	//명진님 getList
+	public List<Cafe> getList(Map<String, Object> map) {
 		List<Cafe> list = null;
 		SqlSession mapper = factory.openSession();
-		list = mapper.selectList("cafe.getList");
+		list = mapper.selectList("cafe.getList",map);
 		mapper.close();
 		return list;
 	}
+	
 	
 	public Cafe getOne(int idx) {
 		SqlSession mapper = factory.openSession();
@@ -33,10 +44,10 @@ public class CafeDao {
 		return c;
 	}
 	
-	public List<Cafe> getLocation(String location) {
+	public List<Cafe> getLocation(Map<String,Object> map) {
 		List<Cafe> list = null;
 		SqlSession mapper = factory.openSession();
-		list = mapper.selectList("cafe.getLocation", location);
+		list = mapper.selectList("cafe.getLocation", map);
 		mapper.close();
 		return list;
 	}
@@ -64,9 +75,22 @@ public class CafeDao {
 		
 	}
 	
+	public int getCount() {
+		SqlSession mapper = factory.openSession();
+		int cnt = mapper.selectOne("cafe.getCount");  
+		mapper.close();     
+		return cnt;
 	
 	
+	}
 	
+	public List<Cafe> getRan(){
+		List<Cafe> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("cafe.getRan");
+		mapper.close();
+		return list;
+	}
 	
 	
 	

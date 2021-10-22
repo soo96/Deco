@@ -50,7 +50,12 @@ public class UsersDao {
 		return dto;
 	}
 	
-	
+	public void delete(int idx) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("users.delete", idx);
+		mapper.commit();
+		mapper.close();
+	}
 	
 	
 }

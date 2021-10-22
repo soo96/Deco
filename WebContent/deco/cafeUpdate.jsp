@@ -9,28 +9,11 @@
 <title>cafe글 수정하기</title>
 </head>
 <body>
-<h1 id="title"><img id="icon" alt="icon" src="../img/icon2.png">deco</h1>
-
-<nav>
-	<ul>
-	<li id="login" >
-    <c:if test="${sessionScope.user == null }">
-		<a href="login.do" class="menu">로그인</a>
-	</c:if>
-		<c:if test="${sessionScope.user != null }">
-		<!-- 로그인된 상태 -->
-		<br>${user.name }(${user.email })  님 반갑습니다. <br>
-		<a href="logout.do" class="menu">로그아웃</a>
-		<a href="" >마이페이지</a>
-	</c:if>
-    	</li>
-    </ul>
-</nav>
-
-
+<%@ include file="../top.jsp" %>
 <section>
+<h1>카페 업데이트</h1>
 <hr>
-<form  method="post" action="edit.deco" >
+<form  method="post" action="cafeModify.deco" >
 <div style="width:80%; margin:auto;">
 <h3>카페</h3>
 <input type="hidden" name="idx"value="${cafe.idx}">
@@ -94,9 +77,7 @@
 </div>
 </form>
 </section>
-
-
-
+<%@ include file="../bottom.jsp" %>
 
 </body>
 </html>

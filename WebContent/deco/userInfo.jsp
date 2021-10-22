@@ -12,12 +12,8 @@
 <link rel="stylesheet" href="">
 </head>
 <body>
-<!--<c:if test="${alert!=null }">
-	<script type="text/javascript">
-		alert('회원 정보가 수정되었습니다.');
-	</script>
-</c:if>
--->
+<%@ include file="../top.jsp" %>
+<section>
 	<div style="width: 70%; margin: auto;">
 		<h3>Deco :: 회원정보</h3>  <!-- 이메일 , 지역 -->
 			<table>
@@ -49,7 +45,7 @@
 				</tr>
 				<tr>
 					<td>주소</td>
-					<td>${dtp.addr }</td>
+					<td>${dto.addr }</td>
 				</tr>
 				
 				<tr>
@@ -58,5 +54,7 @@
 				</tr>
 			</table>
 	</div>
+</section>
+<%@ include file="../bottom.jsp" %>
 </body>
 </html>

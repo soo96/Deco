@@ -9,26 +9,7 @@
 </head>
 <link rel="stylesheet" href="../css/cafe.css">
 <body>
-<h1 id="title"><img id="icon" alt="icon" src="../img/icon2.png">deco</h1>
-
-<nav>
-	<ul>
-	<li id="login" >
-    <c:if test="${sessionScope.user == null }">
-		<a href="login.do" class="menu">로그인</a>
-	</c:if>
-		<c:if test="${sessionScope.user != null }">
-		<!-- 로그인된 상태 -->
-		<br>${user.name }(${user.email })  님 반갑습니다. <br>
-		<a href="logout.do" class="menu">로그아웃</a>
-		<a href="" >마이페이지</a>
-	</c:if>
-    	</li>
-    </ul>
-</nav>
-
-
-
+<%@ include file="../top.jsp" %>
 <section>
 <hr>
 <div style="width:80%; margin:auto;">
@@ -100,7 +81,7 @@
 </div>
 <!--  -------------------------------------------------------  -->
 <!-- 리뷰 -->
-<form action="review.deco"method="post" enctype="multipart/form-data">
+<form action="reviewInsert.deco"method="post" enctype="multipart/form-data">
 	<input type="hidden" value="${cafe.idx}" name="idx">  <!-- 이 값이 에요?  넵 -->
 	<input type="hidden" value="cafe" name="category">
 	<hr class="line">
@@ -169,8 +150,7 @@
 </ul>
  </form>
 </section>
-<hr>
-
+<%@ include file="../bottom.jsp" %>
 
 <script type="text/javascript">
 function deleteCmt(reidx,idx,regrade){

@@ -4,8 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="cafe">
-	<select id="getList" resultType="Cafe">
+	<!-- <select id="getList" resultType="Cafe">
 		select * from cafe order by grade desc
+	</select> -->
+	
+	<select id="getList" resultType="Cafe" parameterType="java.util.Map">
+		select * from cafe order by grade desc limit #{startNo},#{pageSize}
 	</select>
 	
 	<!-- idx로 카페정보 검색 -->
@@ -13,11 +17,22 @@
 		select * from cafe where idx = #{idx}
 	</select>
 	
-	<!-- 카테고리 별 지역체크박스 파라미터 넘겨받아서 카페 검색하는 메소드 -->
-	<select id="getLocation" resultType="Cafe" parameterType="String">
-		select * from cafe where location = #{location}
+	<select id="getCount" resultType="int">
+		select count(*) from cafe
 	</select>
 	
+	<!-- 카테고리 별 지역체크박스 파라미터 넘겨받아서 카페 검색하는 메소드 -->
+	<select id="getLocation" resultType="Cafe" parameterType="java.util.Map">
+		select * from cafe where location = 
+		<foreach item="loca" index="index" collection="location" separator=" or location = ">
+				#{loca} 
+		</foreach>
+		order by grade desc limit #{startNo},#{pageSize}
+	</select>
+	
+	<select id="getRan" resultType="Cafe">
+		select * from cafe order by rand() limit 1
+	</select>
 	
 	<insert id="insert" parameterType="Cafe">
 		INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location)
