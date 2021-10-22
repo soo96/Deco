@@ -20,6 +20,7 @@
 		<br>${user.name }(${user.email })  님 반갑습니다. <br>
 		<a href="logout.deco" class="menu">로그아웃</a>
 		<a href="" >마이페이지</a>
+		<a href="userInfo.deco" >내정보</a>
 		
 	</c:if>
     	</li>

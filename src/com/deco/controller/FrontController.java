@@ -21,6 +21,7 @@ import com.deco.controller.action.LogoutAction;
 import com.deco.controller.action.MemberAction;
 import com.deco.controller.action.ModifyAction;
 import com.deco.controller.action.ReviewListAction;
+import com.deco.controller.action.UserIntoAction;
 
 @WebServlet("*.deco")
 public class FrontController extends HttpServlet {
@@ -81,6 +82,9 @@ public class FrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		}else if(spath.equals("/reviewList.deco")) {
 			Action action = new ReviewListAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/userInfo.deco")) {
+			Action action = new UserIntoAction();
 			forward = action.execute(request, response);
 		}
 		

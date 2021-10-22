@@ -33,6 +33,14 @@ public class CafeDao {
 		return c;
 	}
 	
+	public List<Cafe> getLocation(String location) {
+		List<Cafe> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("cafe.getLocation", location);
+		mapper.close();
+		return list;
+	}
+	
 	public void insert(Cafe cafe) {
 		SqlSession mapper = factory.openSession();
 		mapper.insert("cafe.insert", cafe);
@@ -48,7 +56,13 @@ public class CafeDao {
 		
 	}
 	
-	
+	public void gradeup(Cafe cafe) {
+		SqlSession mapper = factory.openSession();
+		mapper.update("cafe.gradeup",cafe);
+		mapper.commit();
+		mapper.close();
+		
+	}
 	
 	
 	
