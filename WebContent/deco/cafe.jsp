@@ -93,6 +93,10 @@
 	<input type="button" onclick="location.href='list.deco'" value="리스트" class="button small">
 </div>
  </form>
+ <form action="dibsUpdate.deco">
+ 	<input type="hidden" name="refidx" value="${cafe.idx }">
+ 	<input type="submit" value="찜목록 추가/삭제">
+ </form>
 </div>
 <!--  -------------------------------------------------------  -->
 <!-- 리뷰 -->

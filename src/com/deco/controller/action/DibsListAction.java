@@ -24,7 +24,6 @@ public class DibsListAction implements Action {
 		// 사용자 닉네임 이전 페이지에서 session으로 값 받아 넘겨주기 // request.getParameter로 받기
 		HttpSession session = request.getSession();
 		SessionDto user = (SessionDto)session.getAttribute("user");
-		//String nickname = request.getParameter("nickname");
 		String nickname = user.getNickname();
 		
 		DibsDao dao = DibsDao.getInstance();
@@ -32,9 +31,7 @@ public class DibsListAction implements Action {
 		List<Cafe> listCafe = new ArrayList<Cafe>();
 		
 		String dibCafe = dibs.getDibCafe();
-		System.out.println(dibCafe);	//시범 출력
 		StringTokenizer dibsCafe = new StringTokenizer(dibCafe,"/");
-		System.out.println(dibsCafe);
 		while(dibsCafe.hasMoreTokens()) {	//다음 토큰이 있나?
 			String idx = dibsCafe.nextToken(); // 토큰을 idx에 String 으로 담음
 			Cafe cafe = dao.getCafeDibs(idx); 

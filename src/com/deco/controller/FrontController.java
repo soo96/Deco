@@ -15,11 +15,13 @@ import com.deco.controller.action.CafeAction;
 import com.deco.controller.action.CafeInsertAction;
 import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
+import com.deco.controller.action.DibsUpdateAction;
 import com.deco.controller.action.ListAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
 import com.deco.controller.action.MemberAction;
 import com.deco.controller.action.ModifyAction;
+import com.deco.controller.action.ReviewAction;
 import com.deco.controller.action.ReviewListAction;
 import com.deco.controller.action.UserIntoAction;
 
@@ -85,6 +87,12 @@ public class FrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		}else if(spath.equals("/userInfo.deco")) {
 			Action action = new UserIntoAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/review.deco")) {
+			Action action = new ReviewAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/dibsUpdate.deco")) {
+			Action action = new DibsUpdateAction();
 			forward = action.execute(request, response);
 		}
 		

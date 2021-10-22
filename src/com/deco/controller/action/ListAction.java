@@ -34,15 +34,16 @@ public class ListAction implements Action {
 		CafeDao dao = CafeDao.getInstance();
 		List<Cafe> list = new ArrayList<Cafe>();
 		
-//		String locationAll = request.getParameter("locatoinAll");	//전체선택
-//		String[] location = request.getParameterValues("location");	//지역별 카테고리 배열로 받음
-		String locationAll = "";
-		String[] location = {"강남", "인사동"};
+		String locationAll = request.getParameter("locatoinAll");	//전체선택
+		String[] location = request.getParameterValues("location");	//지역별 카테고리 배열로 받음
 		
-//		if(locationAll==null&&location==null)
-//		list = dao.getList();	//처음 리스트 들어왔을때는
-		
-		if(locationAll.equals("all")) { // 전체선택일경우
+		if(locationAll==null&&location==null) {	//처음 리스트 진입 시 
+			locationAll = "all";
+		}else if(locationAll==null&&location!=null) {	// 전체선택 아닐때 null 방지
+			locationAll = "";
+		}
+			
+		if(locationAll.equals("all")) { // 전체선택일경우 & 처음엔 무조건 전체출력
 			list = dao.getList();
 		}else {									// 지역별
 			List<Cafe> li = null;

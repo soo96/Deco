@@ -22,7 +22,7 @@
       		<li><a href="#">공연/전시</a></li>
       		<li><a href="#">체험/이색데이트</a></li>
       	</ul>
-      </div>
+      </div>		<!-- 파라미터 남아있게 하는게 숙제.... -->
     <form action="list.deco" method="get">
     	<input type="hidden" name="default" value="all" >
       <label for="">지역</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -51,7 +51,7 @@
        <li>${vo.content }</li>
        <li>${vo.grade }</li>
        <li>${vo.menu }</li>
-       <li> <img alt="cafe-out" src="/image/${vo.outimage}"></li>
+       <li> <img alt="cafe-out" src="/image/${vo.outimage}" width="200px" height="200px"></li>
        <li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
        <li>${vo.addr }</li>
        <li>${vo.phone }</li>
@@ -62,17 +62,13 @@
   <script type="text/javascript">
   
   function checkOnlyLocationAll(element){
- 	const location = document.getElementsByName('location');
-	location.foreach((lc) => {
-		lc.checked=false;
-	})
-	this.checked=true;
+ 	const choice = document.getElementsByName(`location`);
+	choice.forEach(ch => ch.checked=false)
   } 
   
   function noCheckLocationAll(element){
-  	const locationAll = document.getElementsByName('locationAll');
-	locationAll.checked=false;
-	this.checked=true;
+  	const choice = document.getElementsByName(`locationAll`);
+  	choice.forEach(ch => ch.checked=false)
   }
   
   </script>
