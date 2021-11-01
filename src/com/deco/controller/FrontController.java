@@ -218,7 +218,7 @@ public class FrontController extends HttpServlet {
 			Action action = new EtcModifyAction();
 			forward = action.execute(request, response);
 		  }else if(spath.contentEquals("/etcReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
-			Action action = new EtcReviewInsertAction();
+			Action action = new EtcReviewInsertAction();//안녕안녕
 			forward = action.execute(request, response);
 		  }else if(spath.equals("/insertButton.deco")) {	// 카페 업체 등록 -> cafe.jsp로
 				forward = new ActionForward(false,"deco/insertButton.jsp");
