@@ -1,18 +1,15 @@
 package com.deco.controller.action;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException; 
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.deco.dao.DibsDao;
 import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
-import com.deco.dto.Users;
 
 public class UserInfoDeleteAction implements Action {
 
@@ -35,12 +32,15 @@ public class UserInfoDeleteAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		
 	      UsersDao dao = UsersDao.getInstance();
-	     
+	      DibsDao ddao = DibsDao.getInstance();
+	      ddao.delete(sdto.getNickname());
 	      	int idx = sdto.getIdx();
+	      	ddao.delete(sdto.getNickname());
+	      	dao.reviesDelete(sdto.getNickname());
 	  		dao.delete(idx);
  		
 	      System.out.println(idx);
-	
+	      
 	      request.setAttribute("message", "회원탈퇴 되셨습니다 홈으로 이동합니다.");
 	      request.setAttribute("url","./" );
 		forward.isRedirect = false;

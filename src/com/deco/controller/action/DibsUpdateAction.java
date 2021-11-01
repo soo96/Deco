@@ -34,7 +34,7 @@ public class DibsUpdateAction implements Action {
 		}
 		
 		DibsDao dibsdao = DibsDao.getInstance();
-		int refidx = Integer.parseInt(request.getParameter("refidx"));
+		int refidx = Integer.parseInt(request.getParameter("idx"));
 		Map<String,String> map = new HashMap<String,String>();
 		
 		String message=null,url=null;

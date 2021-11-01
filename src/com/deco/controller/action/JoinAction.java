@@ -1,17 +1,12 @@
 package com.deco.controller.action;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;  
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.deco.dao.UsersDao;
-import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
 
 public class JoinAction implements Action {
@@ -47,6 +42,8 @@ public class JoinAction implements Action {
 		
 		UsersDao dao = UsersDao.getInstance();
 		dao.insert(dto);
+		dao.dibsinsert(nickname);
+		
 		ActionForward forward = new ActionForward();
 		forward.isRedirect = false;
 		forward.url="home_login.deco";

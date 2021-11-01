@@ -2,34 +2,67 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/flexbox2.css?v=3">
+  <meta charset="UTF-8">
+
+  <title>Document</title>
+  <link rel="stylesheet" href="top_bottom.css">
+  <script src="top.js" defer>
+  	
+  </script>
 </head>
 <body>
-<div>
-	<a href="home.deco"><img alt="deco" src="img/deco.png" style="width=100px; height=100px;"></a>
-	<a href="home.deco"><h1 style="display:inline; font-size:100px;">DECO</h1></a>
-</div>
-<div>
-<ul class = "container">
-<li><a class="menu" href="cafeList.deco">cafelist</a></li>
-<li><a class="menu" href="logout.deco">logout</a></li>
- 
-        <li id="logintest">
+<header class="topheader">
+    <a href="home.deco" class="logo">
+      <div class="toplogo">
+        DECO
+      </div>
+    </a>
+    <ul class="topmenu">
+      <li><a href="cafeList.deco">Search</a></li>
+      <li><a href="best.deco">Hot Place</a></li>
+      <li><a href="restration.deco">Registration</a></li>
+      <li><a href="mypage.deco">My Page</a></li>
+    </ul>
+    <div class="topnickname">
+      <a href="">${user.name }</a>
+      <span> 님 반갑습니다.</span>
+      <a href="logout.deco" class="topmenu">로그아웃</a>
+    </div>
+    <a href="#" class="hamburger"><i class="fas fa-bars"></i></a>
+  </header>
+
+
+
+<%-- 
+  <header class="header">
+  <a href="home.deco" class="logo">
+    <div class="logo">
+      DECO
+    </div>
+    </a>
+    <ul class="menu">
+      <li><a href="cafeList.deco">Search</a></li>
+      <li><a href="best.deco">Hot Place</a></li>
+      <li><a href="mypage.deco">My Page</a></li>
+      <li><a href="restration.deco">Restration</a></li>
+         
+    </ul>
+    <div class="nickname">
+     <!-- <li id="logintest"> -->
         <c:if test="${sessionScope.user == null}">
 	<a href="home_login.deco">로그인</a>
 	</c:if>
 	<c:if test="${sessionScope.user != null}">
 	<!-- 로그인 된 상태 -->
-	<br>${user.name}(${user.email }) 님. 반갑습니다. <br>
+	<br>(${user.nickname }) 님. 반갑습니다. <br>
 	<a href="logout.deco" class="menu">로그아웃</a>
 	</c:if>
 	<a href="mypage.deco" class="menu">마이페이지</a>
-	</li>
-</ul>
-		</div>
+	<!-- </li> -->
+    </div>
+    <a href="#" class="hamburger"><i class="fas fa-bars"></i></a>
+  </header> --%>
 </body>
 </html>

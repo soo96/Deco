@@ -13,6 +13,11 @@
 	values(#{name},#{password},#{email},#{gender},#{age},#{phone},#{addr},#{nickname})
   </insert>
   
+  <insert id="dibsinsert" parameterType="String">
+  	insert into dibs(dibCafe,dibFood,dibShow,dibEx,nickname)
+	values('/','/','/','/',#{nickname})
+  </insert>
+  
   <!-- 일단은 <나이, 전화번호> 만 수정 !! -->
   <update id="update" parameterType="Users">
   	update users set age=#{age},phone=#{phone},addr=#{addr} where idx=#{idx} 
@@ -28,5 +33,34 @@
   <delete id="delete" parameterType="Users">
   	delete from users where idx = #{idx}
   </delete>
+ 
+   <delete id="reivewDelete" parameterType="String">
+  	delete from review where nickname = #{nickname}
+  </delete>
+  
+  
+  
+  
+  
+  <select id="emailCheck" parameterType="java.util.Map" resultType="Users">
+  	select * from users where name =#{name} and phone =#{phone}
+  </select>
+  <select id="passwordCheck" parameterType="java.util.Map" resultType="Users">
+  	select * from users where email = #{email} and name =#{name} and phone =#{phone}
+  </select>
+  
+  
+  <update id="passwordupdate" parameterType="Users">
+  	update users set password=#{password} where email=#{email}
+  </update>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 </mapper>

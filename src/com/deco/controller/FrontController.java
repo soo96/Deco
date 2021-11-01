@@ -11,19 +11,50 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.deco.controller.action.Action;
 import com.deco.controller.action.ActionForward;
+import com.deco.controller.action.Alert2;
+import com.deco.controller.action.BestAction;
 import com.deco.controller.action.CafeAction;
+import com.deco.controller.action.CafeDibsListAction;
 import com.deco.controller.action.CafeInsertAction;
+import com.deco.controller.action.CafeListAction;
+import com.deco.controller.action.CafeModifyAction;
 import com.deco.controller.action.CafeUpdateAction;
+import com.deco.controller.action.ChangeAction;
 import com.deco.controller.action.DibsListAction;
 import com.deco.controller.action.DibsUpdateAction;
+import com.deco.controller.action.EtcAction;
+import com.deco.controller.action.EtcDibsListAction;
+import com.deco.controller.action.EtcDibsUpdateAction;
+import com.deco.controller.action.EtcInsertAction;
+import com.deco.controller.action.EtcListAction;
+import com.deco.controller.action.EtcModifyAction;
+import com.deco.controller.action.EtcReviewInsertAction;
+import com.deco.controller.action.EtcUpdateAction;
+import com.deco.controller.action.FoodAction;
+import com.deco.controller.action.FoodDibsListAction;
+import com.deco.controller.action.FoodDibsUpdateAction;
+import com.deco.controller.action.FoodInsertAction;
+import com.deco.controller.action.FoodListAction;
+import com.deco.controller.action.FoodModifyAction;
+import com.deco.controller.action.FoodReviewInsertAction;
+import com.deco.controller.action.FoodUpdateAction;
 import com.deco.controller.action.HomeLoginAction;
-import com.deco.controller.action.CafeListAction;
+import com.deco.controller.action.IdAction;
+import com.deco.controller.action.JoinAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
-import com.deco.controller.action.JoinAction;
-import com.deco.controller.action.CafeModifyAction;
+import com.deco.controller.action.PassWordAction;
+import com.deco.controller.action.PassWordAction2;
 import com.deco.controller.action.ReviewInsertAction;
 import com.deco.controller.action.ReviewListAction;
+import com.deco.controller.action.ShowsAction;
+import com.deco.controller.action.ShowsDibsListAction;
+import com.deco.controller.action.ShowsDibsUpdateAction;
+import com.deco.controller.action.ShowsInsertAction;
+import com.deco.controller.action.ShowsListAction;
+import com.deco.controller.action.ShowsModifyAction;
+import com.deco.controller.action.ShowsReviewInsertAction;
+import com.deco.controller.action.ShowsUpdateAction;
 import com.deco.controller.action.UserInfoAction;
 import com.deco.controller.action.UserInfoDeleteAction;
 import com.deco.controller.action.UserInfoModifyAction;
@@ -70,6 +101,12 @@ public class FrontController extends HttpServlet {
 			forward = new ActionForward(false, "deco/join.jsp");
 		}else if(spath.equals("/mypage.deco")) {
 			forward = new ActionForward(false, "deco/mypage.jsp");
+			/*
+			 * }else if(spath.equals("/userinfoUpdate.deco")) { forward = new
+			 * ActionForward(false, "deco/userInfoUpdate.jsp"); }else
+			 * if(spath.equals("/userinfo.deco")) { forward = new ActionForward(false,
+			 * "deco/userInfo.jsp");
+			 */
 		}else if(spath.equals("/userInfo.deco")) {	// 회원 정보 받아서 userInfo.jsp
 			Action action = new UserInfoAction();
 			forward = action.execute(request, response);
@@ -114,12 +151,119 @@ public class FrontController extends HttpServlet {
 		}else if(spath.equals("/dibsUpdate.deco")) {	// 찜목록 추가/삭제
 			Action action = new DibsUpdateAction();
 			forward = action.execute(request, response);
-		}
+		}else if(spath.equals("/foodDibsUpdate.deco")) {	// 찜목록 추가/삭제
+			Action action = new FoodDibsUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/showsDibsUpdate.deco")) {	// 찜목록 추가/삭제
+			Action action = new ShowsDibsUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/etcDibsUpdate.deco")) {	// 찜목록 추가/삭제
+			Action action = new EtcDibsUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/foodList.deco")) {      // 식당목록 검색
+	         Action action = new FoodListAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/food.deco")) {
+	         Action action = new FoodAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/foodUpdate.deco")) {   // 식당 정보 수정 -> foodUpdate.jsp로
+	         Action action = new FoodUpdateAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/foodInsertAction.deco")) {   // 식당 업체 등록 완료 후 -> home.deco
+	         Action action = new FoodInsertAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/foodInsert.deco")) {   // 식당 업체 등록 -> 
+	         forward = new ActionForward(false,"deco/foodInsert.jsp");
+	      }else if(spath.contentEquals("/foodModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new FoodModifyAction();
+			forward = action.execute(request, response);
+		  }else if(spath.contentEquals("/foodReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new FoodReviewInsertAction();
+			forward = action.execute(request, response);
+		  }else if(spath.equals("/showsList.deco")) {      // 식당목록 검색
+	         Action action = new ShowsListAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/shows.deco")) {
+	         Action action = new ShowsAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/showsUpdate.deco")) {   // 식당 정보 수정 -> foodUpdate.jsp로
+	         Action action = new ShowsUpdateAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/showsInsertAction.deco")) {   // 식당 업체 등록 완료 후 -> home.deco
+	         Action action = new ShowsInsertAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/showsInsert.deco")) {   // 식당 업체 등록 -> 
+	         forward = new ActionForward(false,"deco/showsInsert.jsp");
+	      }else if(spath.contentEquals("/showsModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new ShowsModifyAction();
+			forward = action.execute(request, response);
+		  }else if(spath.contentEquals("/showsReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new ShowsReviewInsertAction();
+			forward = action.execute(request, response);
+		  }else if(spath.equals("/etcList.deco")) {      // 식당목록 검색
+	         Action action = new EtcListAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/etc.deco")) {
+	         Action action = new EtcAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/etcUpdate.deco")) {   // 식당 정보 수정 -> foodUpdate.jsp로
+	         Action action = new EtcUpdateAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/etcInsertAction.deco")) {   // 식당 업체 등록 완료 후 -> home.deco
+	         Action action = new EtcInsertAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/etcInsert.deco")) {   // 식당 업체 등록 -> 
+	         forward = new ActionForward(false,"deco/etcInsert.jsp");
+	      }else if(spath.contentEquals("/etcModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new EtcModifyAction();
+			forward = action.execute(request, response);
+		  }else if(spath.contentEquals("/etcReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new EtcReviewInsertAction();
+			forward = action.execute(request, response);
+		  }else if(spath.equals("/insertButton.deco")) {	// 카페 업체 등록 -> cafe.jsp로
+				forward = new ActionForward(false,"deco/insertButton.jsp");
+			}else if(spath.contentEquals("/best.deco")){	//금주의 핫플로
+				Action action = new BestAction();
+				forward = action.execute(request, response);
+			}else if(spath.equals("/password.deco")) {
+		    	   forward = new ActionForward(false,"deco/password.jsp");
+			}else if(spath.equals("/password2.deco")) {
+		    	   forward = new ActionForward(false,"deco/password2.jsp");
+			}else if(spath.equals("/IdAction.deco")) {
+				Action action = new IdAction();
+				forward = action.execute(request, response);
+			}else if(spath.equals("/PassWordAction.deco")) {
+				Action action = new PassWordAction();
+				forward = action.execute(request, response);
+			}else if(spath.equals("/PassWordAction2.deco")) {
+				Action action = new PassWordAction2();
+				forward = action.execute(request, response);
+			}else if(spath.equals("/change.deco")) {
+				forward = new ActionForward(false,"deco/change.jsp");
+			}else if(spath.equals("/ChangeAction.deco")) {
+				Action action = new ChangeAction();
+				forward = action.execute(request, response);
+			}else if(spath.equals("/Alert2.deco")) {
+				Action action = new Alert2();
+				forward = action.execute(request, response);
+			}else if(spath.equals("/cafeDibsList.deco")) {      // mypage에서 찜목록
+	            Action action = new CafeDibsListAction();
+	            forward = action.execute(request, response);
+	         }else if(spath.equals("/foodDibsList.deco")) {      // mypage에서 찜목록
+	            Action action = new FoodDibsListAction();
+	            forward = action.execute(request, response);
+	         }else if(spath.equals("/showsDibsList.deco")) {      // mypage에서 찜목록
+	            Action action = new ShowsDibsListAction();
+	            forward = action.execute(request, response);
+	         }else if(spath.equals("/etcDibsList.deco")) {      // mypage에서 찜목록
+	            Action action = new EtcDibsListAction();
+	            forward = action.execute(request, response);
+	         }else if(spath.equals("/restration.deco")) {
+					forward = new ActionForward(false,"deco/restration.jsp");
+	         }
+
 		
-		
-		
-		
-		
+
 		
 		
 		
