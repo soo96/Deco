@@ -38,7 +38,7 @@
           </div>
         </div>
         <div>
-          <img class="reviewImg" src="/reviewimage/${vo.imgfile}" onerror="this.src='img/기본이미지.png'"></img>
+          <img class="reviewImg" src="/rvimage/${vo.imgfile}" onerror="this.src='img/기본이미지.png'"></img>
         </div>  
       </div>		
 	</c:forEach>

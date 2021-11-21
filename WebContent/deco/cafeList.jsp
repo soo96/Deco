@@ -77,7 +77,7 @@
 			<c:forEach var="vo" items="${CafeList}" varStatus="status">
 				<a class="list" href="cafe.deco?idx=${vo.idx}&page=${pno}"> <img
 					src="/cimage/${vo.outimage}"
-					onerror="this.src='srcimg/기본이미지.png'" alt="cafe-out"
+					onerror="this.src='/srcimg/커피잔.jpg'" alt="cafe-out"
 					class="img" width="150px" height="150px">
 					<ul class="listContents">
 						<li class="listName">${vo.name }</li>

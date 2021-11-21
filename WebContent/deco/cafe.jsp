@@ -71,12 +71,16 @@
 
 
 <div class="detailBtns">
-   <input type="submit" value="수정" class="button small">
+	<c:if test="${user.nickname eq 'admin'}">
+   	<input type="submit" value="수정" class="button small">
+	</c:if>
    <input type="button" onclick="location.href='foodList.deco?page=${page}'" value="리스트" class="button small">
 </form>
  <form action="dibsUpdate.deco">
     <input type="hidden" name="idx" value="${cafe.idx }">
+    <c:if test="${user.nickname ne 'admin'}">
     <input type="submit" value="찜목록 추가/삭제" class="button small">
+    </c:if>
  </form>
 </div>
 
@@ -133,7 +137,7 @@
           </div>
         </div>
         <div>
-          <img class="reviewImg" src="/reviewimage/${re.imgfile}" onerror="this.src='/srcimg/기본이미지.png'"></img>
+          <img class="reviewImg" src="/reviewimage/${re.imgfile}" onerror="this.src='/srcimg/커피잔.jpg'"></img>
         </div>  
       </div>
    </c:forEach>

@@ -27,9 +27,8 @@
 				<c:forEach var="vo" items="${CafeList}">
 					<a class="list" href="cafe.deco?idx=${vo.idx}">
 						<ul class="listContents">
-							<li class="listName">${vo.content }</li>
-							<li class="listText">수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를
-								베이킹.</li>
+							<li class="listName">${vo.name }</li>
+							<li class="listText">${vo.content }</li>
 							<li>
 								<ul class="locationAndReveiwAndGrade">
 									<li>${vo.location }</li>
@@ -38,7 +37,7 @@
 								</ul>
 							</li>
 						</ul> 
-						<img src="/image/${vo.outimage}" onerror="/image/${vo.outimage}" alt="cafe-out" class="img" width="200px" height="200px">
+						<img src="/cimage/${vo.outimage}" onerror="/cimage/${vo.outimage}" alt="cafe-out" class="img" width="200px" height="200px">
 					</a>
 				</c:forEach>
 			</section>
@@ -47,9 +46,8 @@
 				<c:forEach var="vo" items="${FoodList}">
 					<a class="list" href="food.deco?fidx=${vo.fidx}">
 						<ul class="listContents">
-							<li class="listName">${vo.content }</li>
-							<li class="listText">수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를
-								베이킹.</li>
+							<li class="listName">${vo.name }</li>
+							<li class="listText">${vo.content }</li>
 							<li>
 								<ul class="locationAndReveiwAndGrade">
 									<li>${vo.location }</li>
@@ -68,9 +66,8 @@
 				<c:forEach var="vo" items="${EtcList}">
 					<a class="list" href="etc.deco?eidx=${vo.eidx}">
 						<ul class="listContents">
-							<li class="listName">${vo.content }</li>
-							<li class="listText">수제 쿠키 맛집. 모든 재료는 직접 공수하며 매장에서 실제로 디저트를
-								베이킹.</li>
+							<li class="listName">${vo.name }</li>
+							<li class="listText">${vo.content }</li>
 							<li>
 								<ul class="locationAndReveiwAndGrade">
 									<li>${vo.location }</li>
